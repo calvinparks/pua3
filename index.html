@@ -1,0 +1,73 @@
+<html>
+  <head>
+   <head>
+ <link rel="stylesheet" type="text/css" href="styles.css">
+      <script src="products.js" async></script>
+      <title>BuyNow App</title>
+   </head>
+   <body translate="no" >
+      <div id="app">
+         <div class="nav">
+            <img class="logo"
+               v-bind:src="picture"
+               :alt="`${itemCategory}`"
+               />
+            <p>     
+               <button id="modal-button" data-target="modal-container" data-toggle="modal">Ready To Place My Order</button>
+               <br>
+            </p>
+            
+            <div class="search-btns grid-container no-border no-padding">
+               <div class="grid-item no-border no-padding category-button"><button  @click="getProducts(2)">Show Blaster Products</button></div>
+               <div class="grid-item no-border no-padding category-button"><button  @click="getProducts(1)">Show Laser Saber Products</button></div>
+            </div>
+            <h5 class="category-text">
+            {{itemCategory}}</h4>
+            <br>
+         </div>
+         <div class="products-container scroll-hidden" id="products-container">
+            <div  v-for="product in productList" :key="product.name">
+               <section class="container content-section">
+                  <div class="shop-items">
+                     <div class="shop-item">
+                        <div class="shop-item-details grid-container">
+                           <div class="shop-item-title grid-item">{{product.name}}<br/>
+                              <span  v-if="product.beam"> <b>Color:</b>  {{product.beam}}</span>
+                              <span  v-if="product.bladeCount" > <b>Color:</b> {{product.color}} / <b>Blade Count:</b> {{ product.bladeCount }}</span>
+                           </div>
+                           <div class="shop-item-price grid-item"> ${{product.price}}.00</div>
+                           <div class="grid-item"><input class="shop-item-qty" value="1"></input></div>
+                           <button class="btn btn-primary shop-item-button" type="button">ADD TO ORDER</button>
+                        </div>
+                     </div>
+                  </div>
+               </section>
+            </div>
+         </div>
+      </div>
+      <div id="modal-container" class="modal">
+      <div class="modal-window">
+         <section class="container content-section cart-container">
+            <h2 class="section-header cart-headline">Your Items</h2>
+            <div class="cart-row">
+               <span class="cart-item cart-header cart-column">ITEM</span>
+               <span class="cart-price cart-header cart-column">PRICE</span>
+               <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+            </div>
+            <div class="cart-items">
+            </div>
+            <div class="cart-total">
+               <strong class="cart-total-title">Total</strong>
+               <span class="cart-total-price">$0</span>
+            </div>
+            <button class="btn btn-primary btn-purchase" type="button">Order Now</button>
+         </section>
+         <button data-dismiss="modal">Close</button>
+      </div>
+      <script src="https://unpkg.com/vue@3.0.5"></script>
+      <script src="app.js"></script>
+      
+   
+
+   </body>
+</html>
