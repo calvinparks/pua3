@@ -35,9 +35,11 @@
         
             // Close modal window with 'data-dismiss' attribute or when the backdrop is clicked
             if ((target.hasAttribute('data-dismiss') && target.getAttribute('data-dismiss') == 'modal') || target.classList.contains('modal')) {
+              
                 var modal = document.querySelector('[class="modal open"]');
-                modal.classList.remove('open');
+                if(modal) modal.classList.remove('open');
                 e.preventDefault();
+                
             }
         }, false);
 
